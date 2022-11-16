@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public  class Product {
@@ -6,17 +8,22 @@ public  class Product {
    private double price;
    private double discountRatio;
    private int stockAmount;
-   private Brand brand;
+   private String brand;
 
    public Product() {
    }
 
-   public Product(String name, double price, double discountRatio, int stockAmount, Brand brand) {
+   public Product(String name, double price, double discountRatio, int stockAmount, String brand) {
       this.name = name;
       this.price = price;
       this.discountRatio = discountRatio;
       this.stockAmount = stockAmount;
       this.brand = brand;
+   }
+
+   public static Map<String, Product> products;
+   static {
+      products = new HashMap<>();
    }
 
    public double getPrice() {
@@ -43,11 +50,11 @@ public  class Product {
       this.stockAmount = stockAmount;
    }
 
-   public Brand getBrand() {
+   public String getBrand() {
       return brand;
    }
 
-   public void setBrand(Brand brand) {
+   public void setBrand(String brand) {
       this.brand = brand;
    }
 
@@ -65,4 +72,5 @@ public  class Product {
 
    public void print() {
    }
+
 }

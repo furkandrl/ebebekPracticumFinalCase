@@ -1,7 +1,6 @@
-import java.util.UUID;
 
-public class Brand implements Comparable<Brand>{
-    private  int id; //UUID.randomUUID().toString();
+public class Brand implements Comparable<Brand> {
+    private final int  id;
     private String name;
 
     public Brand(int id,String name) {
@@ -25,15 +24,15 @@ public class Brand implements Comparable<Brand>{
 
     static{
         brands = new Brand[9];
-        brands[0] = new Brand(0, "SAMSUNG");
-        brands[1] = new Brand(1, "LENOVO");
-        brands[2] = new Brand(2, "APPLE");
-        brands[3] = new Brand(3, "HUAWEI");
-        brands[4] = new Brand(4, "CASPER");
-        brands[5] = new Brand(5, "ASUS");
-        brands[6] = new Brand(6, "HP");
-        brands[7] = new Brand(7, "XIAOMI");
-        brands[8] = new Brand(8, "MONSTER");
+        brands[0] = new Brand(7, "SAMSUNG");
+        brands[1] = new Brand(5, "LENOVO");
+        brands[2] = new Brand(0, "APPLE");
+        brands[3] = new Brand(4, "HUAWEI");
+        brands[4] = new Brand(2, "CASPER");
+        brands[5] = new Brand(1, "ASUS");
+        brands[6] = new Brand(3, "HP");
+        brands[7] = new Brand(8, "XIAOMI");
+        brands[8] = new Brand(6, "MONSTER");
     }
 
     public static Brand[] getBrands(){
@@ -42,14 +41,11 @@ public class Brand implements Comparable<Brand>{
 
     @Override
     public int compareTo(Brand o) {
-        return Brand.brands.getClass().getName().compareTo(Brand.brands.getClass().getName());
+        return this.id - o.id;
     }
-
     @Override
     public String toString() {
-        return "{" +
-                "id=" + id +
-                ", name=" + name+ "}"
-                ;
+        return ""+name+"\n";
     }
+
 }
