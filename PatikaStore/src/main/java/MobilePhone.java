@@ -2,7 +2,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class MobilePhone extends Product {
     private int storageSize;
@@ -123,13 +122,16 @@ public class MobilePhone extends Product {
         System.out.println("Ürün eklendi");
     }
 
-    public static Map filter(String deleteSelect){
-        Map<String, Product> resultMobilePhone = MobilePhone.getMobilePhone().entrySet()
-                .stream()
-                .filter(map -> deleteSelect.equals(map.getValue()))
-                .collect(Collectors.toMap(map -> map.getValue().getId(), map -> map.getValue()));
+    public static void filter(String toFilter){
+        if(mobilePhone.containsKey(toFilter)){
+            System.out.println("---------------------------------------------------------------------");
+            System.out.printf("%25s %20s %10s %12s %12s %8s %15s %10s %8s %10s %7s","ID","NAME",
+                    "PRICE","DISCOUNT", "IN STOCK","BRAND","STORAGE","SCREEN","RAM","BATTERY","COLOR");
+            System.out.println();
+            mobilePhone.get(toFilter).print();
+            System.out.println();
+            System.out.println("---------------------------------------------------------------------");
 
-        return resultMobilePhone;
+        }
     }
-
 }

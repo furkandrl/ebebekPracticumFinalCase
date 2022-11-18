@@ -3,25 +3,21 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        var input = new Scanner(System.in);
-
+        var input = new Scanner(System.in);// mainde input almak için
+//program başladığında tabloda veri olması için eklenen ürünler
         var m2 = new MobilePhone("mate 20", 4200, 0.05, 212, "HUAWEI", 128,
                 6.3, 3, 3750, "mavi");
-
         var m1 = new MobilePhone("galaxy", 1300, 0.1, 600, "SAMSUNG", 64,
                 6.21, 4, 4000, "kırmızı");
         MobilePhone.getMobilePhone().put(m1.getId(), m1);
-
         MobilePhone.getMobilePhone().put(m2.getId(), m2);
-
         var n1 = new Notebook("nitro", 4500, 0.2, 100, "MONSTER",
                 512, 15.3, 16);
-
         Notebook.getNotebook().put(n1.getId(), n1);
-
         var n2 = new Notebook("abra", 4500, 0.2, 100, "MONSTER",
                 512, 15.3, 16);
         Notebook.getNotebook().put(n2.getId(), n2);
+
 
         System.out.println("PatikaStore'a Hoş Geldiniz!");
         boolean quit = false;
@@ -81,16 +77,8 @@ public class Main {
                     if (filterSelect == 1) {
                         System.out.print("ID giriniz: ");
                         String filterId = input.next();
-
-                        System.out.println("---------------------------------------------------------------------");
-                        System.out.printf("%25s %20s %10s %12s %12s %8s %15s %10s %8s %10s %7s","ID","NAME",
-                                "PRICE","DISCOUNT", "IN STOCK","BRAND","STORAGE","SCREEN","RAM","BATTERY","COLOR");
-                        System.out.println();
-                        MobilePhone.getMobilePhone().get(filterId).print();
-                        Notebook.getNotebook().get(filterId).print();
-                        System.out.println();
-                        System.out.println("---------------------------------------------------------------------");
-
+                        MobilePhone.filter(filterId);
+                        Notebook.filter(filterId);
                     } else if (filterSelect == 2) {
                         System.out.println("Marka giriniz: ");
                         String filterBrand = input.next().toUpperCase();
@@ -151,19 +139,7 @@ public class Main {
                 if (select == 4) {
                         System.out.print("Ürün silmek için ID giriniz: ");
                         var deleteSelect = input.next();
-
-                        if (MobilePhone.getMobilePhone().containsKey(deleteSelect)) {
-                            System.out.println(MobilePhone.getMobilePhone().get(deleteSelect).getName()+"isimli ürün silindi");
-                            MobilePhone.getMobilePhone().remove(deleteSelect);
-                            System.out.println();
-                        } else if (Notebook.getNotebook().containsKey(deleteSelect)) {
-                            System.out.println(Notebook.getNotebook().get(deleteSelect).getName()+" isimli ürün silindi");
-                            Notebook.getNotebook().remove(deleteSelect);
-                            System.out.println();
-                        } else {
-                            System.out.println("Bu ID'ye sahip bir ürün yok.");
-                            System.out.println();
-                        }
+                        Product.delete(deleteSelect);
                 }
 
                 if (select == 5) {

@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Notebook extends Product{
     private int storageSize;
@@ -94,13 +93,16 @@ public class Notebook extends Product{
         System.out.println("Ürün eklendi");
     }
 
-    public static Map filter(String deleteSelect){
-        Map<String, Product> resultNotebook = Notebook.getNotebook().entrySet()
-                .stream()
-                .filter(map -> deleteSelect.equals(map.getValue().getId()))
-                .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
-
-        return resultNotebook;
+    public static void filter(String toFilter){
+        if(notebook.containsKey(toFilter)){
+            System.out.println("---------------------------------------------------------------------");
+            System.out.printf("%25s %20s %10s %12s %12s %8s %15s %10s %8s","ID","NAME",
+                    "PRICE","DISCOUNT", "IN STOCK","BRAND","STORAGE","SCREEN","RAM");
+            System.out.println();
+            notebook.get(toFilter).print();
+            System.out.println();
+            System.out.println("---------------------------------------------------------------------");
+        }
     }
 
 

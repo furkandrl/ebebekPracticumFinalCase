@@ -73,4 +73,19 @@ public  class Product {
    public void print() {
    }
 
+   public static void delete(String deleteSelect){
+      if (MobilePhone.getMobilePhone().containsKey(deleteSelect)) {
+         System.out.println(MobilePhone.getMobilePhone().get(deleteSelect).getName()+"isimli ürün silindi");
+         MobilePhone.getMobilePhone().remove(deleteSelect);
+         System.out.println();
+      } else if (Notebook.getNotebook().containsKey(deleteSelect)) {
+         System.out.println(Notebook.getNotebook().get(deleteSelect).getName()+" isimli ürün silindi");
+         Notebook.getNotebook().remove(deleteSelect);
+         System.out.println();
+      } else {
+         System.out.println("Bu ID'ye sahip bir ürün yok.");
+         System.out.println();
+      }
+   }
+
 }
