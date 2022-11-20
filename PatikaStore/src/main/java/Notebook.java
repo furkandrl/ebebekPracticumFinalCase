@@ -17,6 +17,10 @@ public class Notebook extends Product{
         this.ramSize = ramSize;
     }
 
+    public Notebook() {
+
+    }
+
     public int getStorageSize() {
         return storageSize;
     }
@@ -69,26 +73,27 @@ public class Notebook extends Product{
     public static void add(){
         var input = new Scanner(System.in);
 
+        var addNotebook = new Notebook();
+
         System.out.print("İsim: ");
-        String n = input.next();
+        addNotebook.setName(input.next());
         System.out.print("Fiyat: ");
-        double p = input.nextDouble();
+        addNotebook.setPrice(input.nextDouble());
         System.out.print("İndirim oranı: ");
-        double d = input.nextDouble();
+        addNotebook.setDiscountRatio(input.nextDouble());
         System.out.print("Stok miktarı: ");
-        int a = input.nextInt();
+        addNotebook.setStockAmount(input.nextInt());
         Arrays.sort(Brand.getBrands());
         System.out.println(Arrays.toString(Brand.getBrands()));
         System.out.print("Marka: ");
-        String i = input.next().toUpperCase();
+        addNotebook.setBrand(input.next().toUpperCase());
         System.out.print("Depolama boyutu: ");
-        int st = input.nextInt();
+        addNotebook.setStorageSize(input.nextInt());
         System.out.print("Ekran boyutu: ");
-        double sc = input.nextDouble();
+        addNotebook.setScreenSize(input.nextDouble());
         System.out.print("Ram boyutu: ");
-        int r = input.nextInt();
+        addNotebook.setRamSize(input.nextInt());
 
-        var addNotebook = new Notebook(n, p, d, a, i, st, sc, r);
         notebook.put(addNotebook.getId(), addNotebook);
         System.out.println("Ürün eklendi");
     }

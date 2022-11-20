@@ -24,6 +24,10 @@ public class MobilePhone extends Product {
         this.color = color;
     }
 
+    public MobilePhone() {
+
+    }
+
     public int getStorageSize() {
         return storageSize;
     }
@@ -92,32 +96,32 @@ public class MobilePhone extends Product {
 
     public static void add(){
         var input = new Scanner(System.in);
+        var addPhone = new MobilePhone();
 
         System.out.print("İsim: ");
-        String n = input.next();
+        addPhone.setName(input.next());
         System.out.print("Fiyat: ");
-        double p = input.nextDouble();
+        addPhone.setPrice(input.nextDouble());
         System.out.print("İndirim oranı: ");
-        double d = input.nextDouble();
+        addPhone.setDiscountRatio(input.nextDouble());
         System.out.print("Stok miktarı: ");
-        int a = input.nextInt();
+        addPhone.setStockAmount(input.nextInt());
         System.out.println("Aşağıdaki markalardan birini giriniz");
         Arrays.sort(Brand.getBrands());
         System.out.println(Arrays.toString(Brand.getBrands()));
         System.out.print("Marka: ");
-        String i = input.next().toUpperCase();
+        addPhone.setBrand(input.next().toUpperCase());
         System.out.print("Depolama boyutu: ");
-        int st = input.nextInt();
+        addPhone.setStorageSize(input.nextInt());
         System.out.print("Ekran boyutu: ");
-        double sc = input.nextDouble();
+        addPhone.setScreenSize(input.nextDouble());
         System.out.print("Ram boyutu: ");
-        int r = input.nextInt();
+        addPhone.setRamSize(input.nextInt());
         System.out.print("Pil kapasitesi: ");
-        int b = input.nextInt();
+        addPhone.setBatteryCapacity(input.nextInt());
         System.out.print("Renk: ");
-        String c = input.next();
+        addPhone.setColor(input.next());
 
-        var addPhone = new MobilePhone(n, p, d, a, i, st, sc, r, b, c);
         mobilePhone.put(addPhone.getId(), addPhone);
         System.out.println("Ürün eklendi");
     }

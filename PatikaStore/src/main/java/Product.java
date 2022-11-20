@@ -24,7 +24,7 @@ public  class Product {
    public static Map<String, Product> products;
    static {
       products = new HashMap<>();
-   }
+   }  // her ürünü aynı hashmapte tutmak için kulllanılabilir
 
    public double getPrice() {
       return price;
